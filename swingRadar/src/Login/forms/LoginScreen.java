@@ -28,12 +28,15 @@ public class LoginScreen extends JFrame {
             password = new String(passwordField1.getPassword());
             angemeldetBleiben = angemeldetBleibenCheckBox.isSelected();
             Layer8 user = Database.getDatabase().sucheNachName(username);
+            Userdoesnotexist.setText("");
+            incorrectPassword.setText("");
             if(user == null){
-                Userdoesnotexist.setText("Benutzername existiert nicht");
+                Userdoesnotexist.setText("Benutzer existiert nicht");
                 return;
             }
-            if(!user.checkPassword(password)){
+            if(!user.checkPassword(password) || password.isEmpty()){
                 incorrectPassword.setText("Falsches Passwort");
+                Userdoesnotexist.setText("Benutzername existiert nicht");
                 return;
             }
             System.out.println("Passwort: " + user.checkPassword(password));
@@ -45,7 +48,11 @@ public class LoginScreen extends JFrame {
             username = textField1.getText();
             password = new String(passwordField1.getPassword());
             angemeldetBleiben = angemeldetBleibenCheckBox.isSelected();
-
+            incorrectPassword.setText("");
+            if (password.isEmpty()){
+                incorrectPassword.setText("Gib ein Passwort an!");
+                return;
+            }
             System.out.println("Benutzername: " + username);
             System.out.println("Passwort: " + password);
             System.out.println("Angemeldet bleiben: " + angemeldetBleiben);
