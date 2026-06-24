@@ -37,10 +37,7 @@ public class ClubMap extends JFrame {
         mapViewer.setZoom(7);
         mapViewer.setAddressLocation(new GeoPosition(51.2217, 6.7762));
 
-        waypoints.add(new infoWaypoint(new GeoPosition(51.195457, 6.428547), "Projekt 42", new String[]{"Waldhausener Str. 40-42, 41061 Mönchengladbach-Nord", "Freitag " +
-                "23:00–05:00 " +
-                "Samstag " +
-                "23:00–05:00", "http://projekt42.info/"}));
+        waypoints.add(new infoWaypoint(new GeoPosition(51.195457, 6.428547), "Projekt 42", new String[]{"Waldhausener Str. 40-42, 41061 Mönchengladbach-Nord", "Freitag,23:00–05:00;Samstag,23:00–05:00;", "http://projekt42.info/"}));
         waypoints.add(new infoWaypoint(new GeoPosition(50.9333, 6.9500), "Köln", new String[]{"Ist halt Köln", "Immernoch Köln"}));
         //51.195457, 6.428547
         WaypointPainter<Waypoint> painter = new WaypointPainter<>();
@@ -48,13 +45,15 @@ public class ClubMap extends JFrame {
         mapViewer.setOverlayPainter(painter);
 
         club = new Club();
-        clubOverview = new ClubOverview();
 
         splitPane = new JSplitPane(
                 JSplitPane.HORIZONTAL_SPLIT,
-                clubOverview,
+                null,
                 mapViewer
         );
+
+        clubOverview = new ClubOverview(club, splitPane, mapViewer);
+        splitPane.setLeftComponent(clubOverview);
         splitPane.setDividerLocation(300);
         splitPane.setResizeWeight(0.0);
 
@@ -71,9 +70,11 @@ public class ClubMap extends JFrame {
         JButton zoomOut = new JButton("-");
         zoomIn.addActionListener(e -> {
             if (mapViewer.getZoom() > 1) mapViewer.setZoom(mapViewer.getZoom() - 1);
+            System.out.println(mapViewer.getZoom());
         });
         zoomOut.addActionListener(e -> {
             if (mapViewer.getZoom() < 17) mapViewer.setZoom(mapViewer.getZoom() + 1);
+            System.out.println(mapViewer.getZoom());
         });
         JPanel zoomPanel = new JPanel();
         zoomPanel.add(zoomIn);
