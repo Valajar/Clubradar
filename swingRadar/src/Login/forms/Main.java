@@ -9,6 +9,7 @@ public class Main {
         SwingUtilities.invokeLater(() -> {
             //LoginOptionScreen loginOptionScreen = new LoginOptionScreen();
             //loginOptionScreen.setVisible(true);
+            ClubDatabase clubdatabase = new ClubDatabase();
             ClubMap mapframe = new ClubMap();
         });
     }
