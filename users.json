@@ -1,0 +1,26 @@
+[
+  {
+    "username": "abc",
+    "passwordHash": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
+    "stayLoggedIn": false,
+    "role": "Admin"
+  },
+  {
+    "username": "gast",
+    "passwordHash": "36bbe50ed96841d10443bcb670d6554f0a34b761be67ec9c4a8ad2c0c44ca42c",
+    "stayLoggedIn": false,
+    "role": "Gast"
+  },
+  {
+    "username": "abcd",
+    "passwordHash": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+    "stayLoggedIn": false,
+    "role": "Admin"
+  },
+  {
+    "username": "noah",
+    "passwordHash": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+    "stayLoggedIn": false,
+    "role": "Admin"
+  }
+]
